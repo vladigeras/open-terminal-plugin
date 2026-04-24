@@ -15,4 +15,16 @@
 
     <extensions defaultExtensionNs="com.intellij">
     </extensions>
+
+    <actions>
+        <action
+            id="com.vladigeras.openterminal.OpenTerminalAction"
+            class="com.vladigeras.openterminal.OpenTerminalAction"
+            text="Open Terminal"
+            description="Quick open system terminal"
+            icon="tool.svg">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt T"/>
+        </action>
+    </actions>
 </idea-plugin>
