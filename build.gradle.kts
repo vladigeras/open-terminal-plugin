@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdea("2023.2.5")
+        intellijIdea("2023.3")
         testFramework(org.jetbrains.intellij.platform.gradle.TestFrameworkType.Platform)
     }
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.11.0")
@@ -47,6 +47,7 @@ kotlin {
     compilerOptions {
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
     }
+    jvmToolchain(21)
 }
 
 tasks {
