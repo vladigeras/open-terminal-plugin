@@ -16,7 +16,7 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdea("2025.3")
+        intellijIdea("2023.2.5")
         testFramework(org.jetbrains.intellij.platform.gradle.TestFrameworkType.Platform)
     }
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.11.0")
@@ -27,7 +27,7 @@ dependencies {
 intellijPlatform {
     pluginConfiguration {
         ideaVersion {
-            sinceBuild = "253.28294"
+            sinceBuild = "232"
         }
 
         changeNotes = """
