@@ -4,4 +4,4 @@
 ![Version](https://img.shields.io/jetbrains/plugin/v/com.vladigeras.open-terminal)
 
 # Description 
-Intellij plugin for quick open your system terminal app
+Intellij plugin for quick open your system terminal app from project root

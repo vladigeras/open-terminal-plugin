@@ -1,5 +1,7 @@
 package com.vladigeras.openterminal
 
+import com.vladigeras.openterminal.infra.Platform
+import com.vladigeras.openterminal.infra.PlatformDetector
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
