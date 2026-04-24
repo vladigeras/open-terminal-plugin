@@ -15,8 +15,9 @@ repositories {
 }
 
 dependencies {
+    testImplementation("org.junit.jupiter:junit-jupiter:5.11.0")
     intellijPlatform {
-        intellijIdea("2025.2.4")
+        intellijIdea("2025.3")
         testFramework(org.jetbrains.intellij.platform.gradle.TestFrameworkType.Platform)
     }
 }
@@ -24,7 +25,7 @@ dependencies {
 intellijPlatform {
     pluginConfiguration {
         ideaVersion {
-            sinceBuild = "252.25557"
+            sinceBuild = "253.28294"
         }
 
         changeNotes = """
@@ -43,5 +44,11 @@ tasks {
 kotlin {
     compilerOptions {
         jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+    }
+}
+
+tasks {
+    test {
+        useJUnitPlatform()
     }
 }
