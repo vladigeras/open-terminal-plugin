@@ -1,0 +1,18 @@
+<idea-plugin>
+    <id>com.vladigeras.open-terminal</id>
+    <name>Open Terminal</name>
+
+    <vendor email="vladi6eras@gmail.com" url="https://github.com/vladigeras">Vladislav Gerasimov</vendor>
+
+    <description>
+        <![CDATA[
+            <h4>Use hotkey for quick open your system terminal.</h4>
+            <h4>Plugin adds an action in the Tools settings group.</h4>
+        ]]>
+    </description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+    </extensions>
+</idea-plugin>
