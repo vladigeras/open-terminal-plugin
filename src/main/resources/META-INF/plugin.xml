@@ -6,7 +6,7 @@
 
     <description>
         <![CDATA[
-            <h4>Use hotkey for quick open your system terminal.</h4>
+            <h4>Use hotkey for quick open your system terminal from project root.</h4>
             <h4>Plugin adds an action in the Tools settings group.</h4>
         ]]>
     </description>
@@ -14,12 +14,13 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="OpenTerminalActionNotificationGroup" displayType="BALLOON"/>
     </extensions>
 
     <actions>
         <action
-            id="com.vladigeras.openterminal.OpenTerminalAction"
-            class="com.vladigeras.openterminal.OpenTerminalAction"
+            id="OpenTerminalAction"
+            class="com.vladigeras.openterminal.action.OpenTerminalAction"
             text="Open Terminal"
             description="Quick open system terminal"
             icon="com.vladigeras.openterminal.Icons.TOOL">

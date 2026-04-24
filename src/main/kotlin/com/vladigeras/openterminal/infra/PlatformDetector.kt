@@ -1,4 +1,4 @@
-package com.vladigeras.openterminal
+package com.vladigeras.openterminal.infra
 
 import com.intellij.openapi.util.SystemInfo
 

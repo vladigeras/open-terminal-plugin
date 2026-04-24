@@ -21,6 +21,8 @@ dependencies {
     }
     testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.2")
     testImplementation("org.junit.platform:junit-platform-launcher:1.10.2")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    testImplementation("org.mockito:mockito-core:5.11.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.2")
     testRuntimeOnly("junit:junit:4.13.2")
 }
