@@ -22,9 +22,9 @@
             class="com.vladigeras.openterminal.OpenTerminalAction"
             text="Open Terminal"
             description="Quick open system terminal"
-            icon="tool.svg">
+            icon="com.vladigeras.openterminal.Icons.TOOL">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
-            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt T"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt T"/>
         </action>
     </actions>
 </idea-plugin>
