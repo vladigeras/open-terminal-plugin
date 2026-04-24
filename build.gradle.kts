@@ -31,10 +31,8 @@ intellijPlatform {
     pluginConfiguration {
         ideaVersion {
             sinceBuild = "243"
-            untilBuild = ""
         }
-        changeNotes = providers.environmentVariable("CHANGE_NOTES")
-            .map { it.ifBlank { "<p>No release notes provided.</p>" } }
+        changeNotes = providers.environmentVariable("CHANGE_NOTES").orElse("<p>No release notes provided.</p>")
     }
 }
 
