@@ -5,9 +5,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.diagnostic.Logger
 import java.io.IOException
 
-class OpenTerminalAction(
-    private val platformDetector: PlatformDetector = PlatformDetector()
-) : AnAction() {
+class OpenTerminalAction : AnAction() {
 
     private val logger = Logger.getInstance(OpenTerminalAction::class.java)
 
@@ -18,7 +16,7 @@ class OpenTerminalAction(
 
     private fun openSystemTerminal() {
         try {
-            val platform = platformDetector.detect()
+            val platform = PlatformDetector.detect()
             logger.info("Opening terminal for platform $platform")
             val command = platform.command.split(" ").toTypedArray()
             Runtime.getRuntime().exec(command).waitFor()

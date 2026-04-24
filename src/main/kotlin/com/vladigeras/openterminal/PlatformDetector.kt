@@ -1,18 +1,13 @@
 package com.vladigeras.openterminal
 
-class PlatformDetector {
+import com.intellij.openapi.util.SystemInfo
 
-    companion object {
-        const val OS_NAME_PROPERTY = "os.name"
-    }
+object PlatformDetector {
 
-    open fun detect(): Platform {
-        val os = System.getProperty(OS_NAME_PROPERTY) ?: throw UnsupportedOperationException("OS name property not found")
-        return when {
-            os.lowercase().contains("mac") -> Platform.MAC
-            os.lowercase().contains("linux") -> Platform.LINUX
-            os.lowercase().contains("win") -> Platform.WINDOWS
-            else -> throw UnsupportedOperationException("Unsupported OS: $os")
-        }
+    fun detect(): Platform = when {
+        SystemInfo.isMac -> Platform.MAC
+        SystemInfo.isLinux -> Platform.LINUX
+        SystemInfo.isWindows -> Platform.WINDOWS
+        else -> throw UnsupportedOperationException("Unsupported OS: ${SystemInfo.OS_NAME}")
     }
 }
