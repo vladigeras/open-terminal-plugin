@@ -10,10 +10,28 @@ jobs:
       PUBLISH_TOKEN: ${{ secrets.JETBRAINS_PUBLISH_TOKEN }}
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-java@v5
+
+      - name: Setup Java
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: 21
+
+      - name: Convert Markdown Release Notes to HTML
+        id: convert_notes
+        run: |
+          if [ -z "${{ github.event.release.body }}" ]; then
+            BODY_HTML="<p>No release notes provided.</p>"
+          else
+            sudo apt-get install -y pandoc > /dev/null 2>&1
+            BODY_HTML=$(echo "${{ github.event.release.body }}" | pandoc -f markdown -t html)
+          fi
+          {
+            echo "CHANGE_NOTES<<CHANGE_NOTES_EOF"
+            echo "$BODY_HTML"
+            echo "CHANGE_NOTES_EOF"
+          } >> "$GITHUB_ENV"
+
       - run: java -version
       - run: ./gradlew -version
       - run: echo $APP_VERSION

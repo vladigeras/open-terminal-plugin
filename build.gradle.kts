@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.vladigeras"
-version = "1.0-SNAPSHOT"
+version = System.getenv("APP_VERSION") ?: "0.0.1"
 
 repositories {
     mavenCentral()
@@ -31,11 +31,10 @@ intellijPlatform {
     pluginConfiguration {
         ideaVersion {
             sinceBuild = "243"
+            untilBuild = ""
         }
-
-        changeNotes = """
-            Initial version
-        """.trimIndent()
+        changeNotes = providers.environmentVariable("CHANGE_NOTES")
+            .map { it.ifBlank { "<p>No release notes provided.</p>" } }
     }
 }
 
@@ -56,5 +55,13 @@ kotlin {
 tasks {
     test {
         useJUnitPlatform()
+    }
+    signPlugin {
+        certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
+        privateKey.set(System.getenv("PRIVATE_KEY"))
+        password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
+    }
+    publishPlugin {
+        token.set(System.getenv("PUBLISH_TOKEN"))
     }
 }
