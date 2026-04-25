@@ -23,7 +23,7 @@
             class="com.vladigeras.openterminal.action.OpenTerminalAction"
             text="Open Terminal"
             description="Quick open system terminal"
-            icon="com.vladigeras.openterminal.Icons.TOOL">
+            icon="com.vladigeras.openterminal.infra.Icons.TOOL">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
             <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift alt T"/>
         </action>
