@@ -2,31 +2,49 @@ package com.vladigeras.openterminal.launcher
 
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertTrue
 
 class MacOsTerminalLauncherTest {
 
+    private val launcher = MacOsTerminalLauncher()
+
     @Test
-    fun `launcher should escape quotes in directory path`() {
-        val dir = "test\"dir"
-        val escaped = dir.replace("\"", "\\\"")
-        
-        assertEquals("test\\\"dir", escaped)
+    fun `buildCommand targets the 'open' utility`() {
+        val cmd = launcher.buildCommand("/Users/foo/project")
+        assertEquals("open", cmd.exePath)
     }
 
     @Test
-    fun `launcher should handle simple directory without quotes`() {
-        val dir = "/home/user/project"
-        val escaped = dir.replace("\"", "\\\"")
-        
-        assertEquals("/home/user/project", escaped)
+    fun `buildCommand passes -a Terminal and the directory`() {
+        val cmd = launcher.buildCommand("/Users/foo/project")
+        assertEquals(listOf("-a", "Terminal", "/Users/foo/project"), cmd.parametersList.parameters)
     }
 
     @Test
-    fun `launcher should handle directory with backslash`() {
-        val dir = "C:\\Users\\Test"
-        val escaped = dir.replace("\"", "\\\"")
-        
-        assertEquals("C:\\Users\\Test", escaped)
+    fun `buildCommand sets working directory to the target dir`() {
+        val cmd = launcher.buildCommand("/Users/foo/project")
+        assertEquals("/Users/foo/project", cmd.workDirectory?.path)
+    }
+
+    @Test
+    fun `buildCommand keeps paths with spaces as a single argument`() {
+        val cmd = launcher.buildCommand("/Users/foo/my project")
+        assertEquals(3, cmd.parametersList.parameters.size)
+        assertEquals("/Users/foo/my project", cmd.parametersList.parameters[2])
+    }
+
+    @Test
+    fun `buildCommand keeps paths with quotes as a single argument`() {
+        // GeneralCommandLine is responsible for OS-level quoting, we must not
+        // pre-escape the characters ourselves.
+        val dir = "/Users/foo/weird\"name"
+        val cmd = launcher.buildCommand(dir)
+        assertEquals(dir, cmd.parametersList.parameters[2])
+    }
+
+    @Test
+    fun `buildCommand keeps paths with single quotes as a single argument`() {
+        val dir = "/Users/foo/it's/ok"
+        val cmd = launcher.buildCommand(dir)
+        assertEquals(dir, cmd.parametersList.parameters[2])
     }
 }
