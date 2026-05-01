@@ -8,26 +8,32 @@ import com.vladigeras.openterminal.launcher.LinuxTerminalLauncher
 import com.vladigeras.openterminal.launcher.MacOsTerminalLauncher
 import com.vladigeras.openterminal.launcher.WindowsTerminalLauncher
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.condition.EnabledOnOs
+import org.junit.jupiter.api.condition.OS
 import kotlin.test.assertTrue
 
 class SystemTerminalServiceTest {
 
     @Test
+    @EnabledOnOs(OS.MAC)
     fun `launcherFor MAC returns MacOsTerminalLauncher`() {
         assertTrue(SystemTerminalService.launcherFor(MAC) is MacOsTerminalLauncher)
     }
 
     @Test
+    @EnabledOnOs(OS.LINUX)
     fun `launcherFor LINUX returns LinuxTerminalLauncher`() {
         assertTrue(SystemTerminalService.launcherFor(LINUX) is LinuxTerminalLauncher)
     }
 
     @Test
+    @EnabledOnOs(OS.WINDOWS)
     fun `launcherFor WINDOWS returns WindowsTerminalLauncher`() {
         assertTrue(SystemTerminalService.launcherFor(WINDOWS) is WindowsTerminalLauncher)
     }
 
     @Test
+    @EnabledOnOs(OS.MAC)
     fun `launcherFor returns a fresh instance per call`() {
         // Launchers hold no shared state, but confirm the factory does not
         // accidentally return a shared singleton, which could cause subtle

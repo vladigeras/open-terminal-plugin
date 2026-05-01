@@ -4,10 +4,30 @@ import com.vladigeras.openterminal.infra.Platform.LINUX
 import com.vladigeras.openterminal.infra.Platform.MAC
 import com.vladigeras.openterminal.infra.Platform.WINDOWS
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.condition.EnabledOnOs
+import org.junit.jupiter.api.condition.OS
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class PlatformDetectorTest {
+
+    @Test
+    @EnabledOnOs(OS.MAC)
+    fun `detect should return valid platform for MAC OS`() {
+        assertEquals(MAC, PlatformDetector.detect())
+    }
+
+    @Test
+    @EnabledOnOs(OS.LINUX)
+    fun `detect should return valid platform for LINUX OS`() {
+        assertEquals(LINUX, PlatformDetector.detect())
+    }
+
+    @Test
+    @EnabledOnOs(OS.WINDOWS)
+    fun `detect should return valid platform for WINDOWS OS`() {
+        assertEquals(WINDOWS, PlatformDetector.detect())
+    }
 
     @Test
     fun `detect should return valid platform for current OS`() {

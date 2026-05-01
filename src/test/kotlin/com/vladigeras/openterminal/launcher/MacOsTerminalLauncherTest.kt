@@ -1,8 +1,11 @@
 package com.vladigeras.openterminal.launcher
 
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.condition.EnabledOnOs
+import org.junit.jupiter.api.condition.OS.MAC
 import kotlin.test.assertEquals
 
+@EnabledOnOs(MAC)
 class MacOsTerminalLauncherTest {
 
     private val launcher = MacOsTerminalLauncher()

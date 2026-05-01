@@ -1,8 +1,11 @@
 package com.vladigeras.openterminal.launcher
 
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.condition.EnabledOnOs
+import org.junit.jupiter.api.condition.OS.WINDOWS
 import kotlin.test.assertEquals
 
+@EnabledOnOs(WINDOWS)
 class WindowsTerminalLauncherTest {
 
     private val launcher = WindowsTerminalLauncher()

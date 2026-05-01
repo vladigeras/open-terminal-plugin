@@ -1,9 +1,12 @@
 package com.vladigeras.openterminal.launcher
 
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.condition.EnabledOnOs
+import org.junit.jupiter.api.condition.OS.LINUX
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
+@EnabledOnOs(LINUX)
 class LinuxTerminalLauncherTest {
 
     private val launcher = LinuxTerminalLauncher()
