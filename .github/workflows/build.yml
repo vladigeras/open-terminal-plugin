@@ -22,3 +22,10 @@ jobs:
       - run: java -version
       - run: ./gradlew -version
       - run: ./gradlew build
+      - name: Publish Test Report
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: JUnit Tests
+          path: build/test-results/test/*.xml
+          reporter: java-junit
